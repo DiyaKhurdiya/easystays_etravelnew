@@ -12,7 +12,7 @@ const RoomCard = ({ room }) => {
     isHalf: true,
   };
   return (
-    <Link className="roomCard" to={`/product/${room._id}`}>
+    <Link className="roomCard" to={`/room/${room._id}`}>
       <img src={room.images[0].url} alt={room.name} />
       <p>{room.name}</p>
       <p> <i class="fa fa-map-marker-alt" >

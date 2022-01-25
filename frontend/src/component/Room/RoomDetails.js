@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./RoomDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getRoomDetails } from "../../actions/roomAction.js";
@@ -6,12 +6,32 @@ import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import {addItemsToCart} from "../../actions/cartAction";
 
 const RoomDetails = ({ match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
   const { room, loading, error } = useSelector((state) => state.roomDetails);
+
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    if (room.stock <= quantity) return;
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity <= 1) return;
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(match.params.id, quantity));
+    alert.success("Hotel Booked! Kindly proceed to payment");
+  };
 
   useEffect(() => {
     if (error) {
@@ -60,11 +80,11 @@ const RoomDetails = ({ match }) => {
                 <h1>{` ₹ ${room.price}/ night`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button>-</button>
-                    <input value="1" type="number" />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input value={quantity} type="number" />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button>Book Rooms</button>
+                  <button onClick={addToCartHandler}>Book Rooms</button>
                 </div>
 
                 <p>
