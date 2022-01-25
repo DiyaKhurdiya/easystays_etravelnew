@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect} from "react";
 import Header from "./component/layout/Header/Header.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./component/layout/Footer/Footer.js";
