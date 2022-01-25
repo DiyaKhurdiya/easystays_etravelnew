@@ -14,29 +14,31 @@ import {
   CLEAR_ERRORS,
 } from "../constants/roomConstants";
 
-export const getRoom = (currentPage = 1, price = [0,25000], category, ratings = 0 ) => async (dispatch) => {
-  try {
-    dispatch({ type: ALL_ROOM_REQUEST });
+export const getRoom =
+  (currentPage = 1, price = [0, 25000], category, ratings = 0) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: ALL_ROOM_REQUEST });
 
-    let link = (`/api/v1/rooms?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`);
+      let link = `/api/v1/rooms?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
-    if (category) {
-      link = `/api/v1/products?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+      if (category) {
+        link = `/api/v1/rooms?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+      }
+
+      const { data } = await axios.get(link);
+
+      dispatch({
+        type: ALL_ROOM_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ALL_ROOM_FAIL,
+        payload: error.response.data.message,
+      });
     }
-
-    const { data } = await axios.get(link);
-
-    dispatch({
-      type: ALL_ROOM_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: ALL_ROOM_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+  };
 
 // Get room details
 export const getRoomDetails = (id) => async (dispatch) => {
