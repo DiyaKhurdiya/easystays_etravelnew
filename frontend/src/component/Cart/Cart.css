@@ -1,3 +1,33 @@
+.emptyList {
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-heart-broken {
+  color: #a77066;
+}
+
+.emptyList > p {
+  font-size: 2vmax;
+  font-family: "Bodoni Moda", sans-serif;
+}
+.emptyList > a {
+  background-color: rgb(24, 23, 23);
+  color: #998d79;
+  border: none;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font: 400 1vmax "Raleway";
+  text-decoration: none;
+}
+
+
 .cartPage {
     padding: 5vmax;
   }
@@ -36,11 +66,12 @@
 
   .cartInput > button {
     border: none;
-    background-color: rgba(0, 0, 0, 0.616);
+    background-color: rgb(24, 23, 23);
     padding: 0.7vmax;
     cursor: pointer;
-    color: white;
+    color: #998d79;
     transition: all 0.5s;
+    font: 300 1.1vmax "Raleway";
   }
   
   .cartInput > button:hover {
@@ -53,7 +84,7 @@
     width: 1vmax;
     text-align: center;
     outline: none;
-    font: 400 0.8vmax "Raleway";
+    font: 300 1.1vmax "Raleway";
     color: rgba(0, 0, 0, 0.74);
   }
 
