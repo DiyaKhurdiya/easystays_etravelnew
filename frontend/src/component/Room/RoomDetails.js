@@ -86,7 +86,8 @@ const RoomDetails = ({ match }) => {
                     <input value={quantity} type="number" />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button onClick={addToCartHandler}>Reserve</button>
+                  <button>Reserve</button>
+                  <button onClick={addToCartHandler}>Wishlist</button>
                 </div>
                 <span>
                   From: {match.params.fromdate}
