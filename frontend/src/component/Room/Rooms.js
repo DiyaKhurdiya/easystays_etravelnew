@@ -313,7 +313,6 @@ const Rooms = ({ match }) => {
                 />
               ))}
           </div>
-
           <div className="filterBox">
             <Typography variant="h5">Price</Typography>
             <Slider
