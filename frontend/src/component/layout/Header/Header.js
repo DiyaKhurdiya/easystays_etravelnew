@@ -16,8 +16,8 @@ const Header = () => {
         <a href="\rooms" className="category">
           Hotels
         </a>
-        <a href="\locations" className="category">
-          Locations
+        <a href="\attractions" className="category">
+          Attractions
         </a>
         <a href="\contact" className="category">
           Contact
