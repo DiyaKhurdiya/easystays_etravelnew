@@ -31,12 +31,12 @@ body {
 
 .banner > p {
   color: white;
-  font: 300 1.7vmax "Raleway";
+  font: 300 1.7vmax "Oxygen";
 }
 
 .homeHeading {
   text-align: center;
-  font-family: "Raleway", sans-serif;
+  font-family: "Oxygen", sans-serif;
   font-size: 1.4vmax;
   font-weight: lighter;
   color: rgba(0, 0, 0, 0.678);
@@ -56,7 +56,7 @@ body {
 }
 
 .roomCard {
-  padding-top: 8vmax;
+  padding-top: 6vmax;
   width: 20vmax;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@ body {
   color: rgb(48, 48, 48);
   margin: 2vmax;
   transition: all 0.4s;
-  padding-bottom: 2vmax;
+  padding-bottom: 0.5vmax;
 }
 
 .roomCard > img {
@@ -83,18 +83,19 @@ body {
 
 .roomCardSpan {
   margin: 1vmax;
-  font: 300 0.8vmax "Raleway";
+  font: 300 0.8vmax "Oxygen";
 }
 
 .roomCard > p {
-  font-family: "Raleway", sans-serif;
-  font-size: 1.5vmax;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6vmax;
+  font-weight: 600;
   margin: 1vmax 0.5vmax;
   margin-bottom: 0;
 }
 
 .roomCard > p:last-of-type {
-  font-family: "Bodoni Moda", sans-serif;
+  font-family: "Oxygen", sans-serif;
   color: rgba(54, 54, 54, 0.582);
   font-size: 1.1vmax;
   margin: 1.2vmax 0.3vmax;
@@ -102,14 +103,17 @@ body {
 }
 
 .category {
-  font-family: "Bodoni Moda", sans-serif;
+  font-family: "Oxygen", sans-serif;
   font-size: 1vmax;
+  margin-bottom: 0vmax;
 }
+
 .roomCard > span {
-  margin: 0.5vmax;
-  font-size: 1.2vmax;
+  margin-left: 0.5vmax;
+  margin-top: 0vmax;
+  font-size: 1.1vmax;
   color: rgb(48, 48, 48);
-  font-family: "Raleway", sans-serif;
+  font-family: "Oxygen", sans-serif;
 }
 
 .roomCard:hover {
@@ -120,7 +124,7 @@ body {
   align-items: flex-end;
   z-index: 1;
   font-size: 0.8vmax;
-  font-family: "Raleway", sans-serif;
+  font-family: "Oxygen", sans-serif;
   margin-left: 0.7vmax;
   margin-inline: 0.7vmax;
   margin-bottom: 1vmax;
@@ -139,7 +143,7 @@ body {
   align-items: flex-end;
   z-index: 1;
   font-size: 0.8vmax;
-  font-family: "Raleway", sans-serif;
+  font-family: "Oxygen", sans-serif;
   margin-left: 0.7vmax;
   margin-bottom: 1vmax;
   padding: 0 0.7vmax;
@@ -157,7 +161,7 @@ body {
   align-items: flex-end;
   z-index: 1;
   font-size: 0.8vmax;
-  font-family: "Raleway", sans-serif;
+  font-family: "Oxygen", sans-serif;
   margin-left: 0.7vmax;
   margin-bottom: 1vmax;
   padding: 0 0.7vmax;
@@ -175,7 +179,7 @@ body {
   align-items: flex-end;
   z-index: 1;
   font-size: 0.8vmax;
-  font-family: "Raleway", sans-serif;
+  font-family: "Oxygen", sans-serif;
   margin-left: 0.7vmax;
   margin-bottom: 1vmax;
   padding: 0 0.7vmax;
@@ -193,7 +197,7 @@ body {
   height: 1.5vmax;
   margin-bottom: 1vmax;
   font-size: 0;
-  font-family: "Raleway", sans-serif;
+  font-family: "Oxygen", sans-serif;
   justify-content: center;
   border: none;
   background-color: transparent;
@@ -215,6 +219,6 @@ body {
 
   .roomCard > div > span {
     margin: 0 0.5vmax;
-    font: 300 1vmax "Raleway";
+    font: 300 1vmax "Oxygen";
   }
 }
