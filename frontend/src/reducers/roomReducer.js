@@ -20,7 +20,7 @@ export const roomReducer = (state = { rooms: [] }, action) => {
         loading: false,
         rooms: action.payload.rooms,
         roomsCount: action.payload.roomsCount,
-        resultPerPage:action.payload.resultPerPage
+        resultPerPage: action.payload.resultPerPage,
       };
     case ALL_ROOM_FAIL:
       return {

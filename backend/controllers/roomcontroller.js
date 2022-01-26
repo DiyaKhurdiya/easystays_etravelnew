@@ -11,13 +11,12 @@ exports.createRoom = catchAsyncErrors(async (req, res, next) => {
 
   res.status(201).json({
     success: true,
-    message: "Room created successfully",
     room,
   });
 });
 
 // Get all rooms
-exports.getAllRooms = catchAsyncErrors(async (req, res) => {
+exports.getAllRooms = catchAsyncErrors(async (req, res, next) => {
   const resultPerPage = 12;
   const roomsCount = await Room.countDocuments();
   const apiFeature = new ApiFeatures(Room.find(), req.query)
@@ -64,7 +63,6 @@ exports.updateRoom = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    message: "Room successfully updated",
     room,
   });
 });
@@ -79,7 +77,7 @@ exports.deleteRoom = catchAsyncErrors(async (req, res, next) => {
 
   await room.remove();
 
-  res.status(201).json({
+  res.status(200).json({
     success: true,
     message: "Room deleted successfully!",
   });
@@ -87,48 +85,43 @@ exports.deleteRoom = catchAsyncErrors(async (req, res, next) => {
 
 // Create or update review
 exports.createReview = catchAsyncErrors(async (req, res, next) => {
-
-  const {rating,comment,roomId} = req.body;
+  const { rating, comment, roomId } = req.body;
 
   const review = {
-    user:req.user._id,
-    name:req.user.name,
-    rating:Number(rating),
+    user: req.user._id,
+    name: req.user.name,
+    rating: Number(rating),
     comment,
-  }
+  };
 
   const room = await Room.findById(roomId);
 
   const isReviewed = room.reviews.find(
-    rev => rev.user.toString() === req.user._id.toString())
+    (rev) => rev.user.toString() === req.user._id.toString()
+  );
 
-  if(isReviewed)
-  {
-    room.reviews.forEach(rev => {
-      if(rev.user.toString() === req.user._id.toString())
-      rev.rating = rating;
+  if (isReviewed) {
+    room.reviews.forEach((rev) => {
+      if (rev.user.toString() === req.user._id.toString()) rev.rating = rating;
       rev.comment = comment;
     });
-
-  }
-  else {
+  } else {
     room.reviews.push(review);
     room.numOfReviews = room.reviews.length;
   }
 
   let avg = 0;
 
-  room.reviews.forEach(rev => {
+  room.reviews.forEach((rev) => {
     avg += rev.rating;
-  })
-  
-  room.ratings= avg/room.reviews.length;
+  });
 
-  await room.save({validateBeforeSave: false});
+  room.ratings = avg / room.reviews.length;
 
+  await room.save({ validateBeforeSave: false });
 
   res.status(201).json({
-    success: true
+    success: true,
   });
 });
 
@@ -142,7 +135,7 @@ exports.getReviews = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    reviews: room.reviews
+    reviews: room.reviews,
   });
 });
 
@@ -155,11 +148,12 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   }
 
   const reviews = room.reviews.filter(
-    rev => rev._id.toString() !== req.query.id.toString());
+    (rev) => rev._id.toString() !== req.query.id.toString()
+  );
 
   let avg = 0;
-  reviews.forEach(rev => {
-    avg+=rev.rating;
+  reviews.forEach((rev) => {
+    avg += rev.rating;
   });
 
   let ratings = 0;
@@ -172,16 +166,19 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
 
   const numOfReviews = reviews.length;
 
-  await Room.findByIdAndUpdate(req.query.roomId, {
-    reviews,
-    ratings,
-    numOfReviews
-  },
-  {
-    new:true,
-    runValidators:true,
-    useFindAndModify: false
-  })
+  await Room.findByIdAndUpdate(
+    req.query.roomId,
+    {
+      reviews,
+      ratings,
+      numOfReviews,
+    },
+    {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    }
+  );
 
   res.status(200).json({
     success: true,

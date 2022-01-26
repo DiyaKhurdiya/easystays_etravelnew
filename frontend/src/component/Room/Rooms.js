@@ -1,13 +1,13 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, { Fragment, useEffect, useState } from "react";
 import "./Rooms.css";
-import { useSelector, useDispatch,  } from 'react-redux';
-import { clearErrors,getRoom } from '../../actions/roomAction';
-import Loader from '../layout/Loader/Loader';
-import RoomCard from '../Home/RoomCard';
-import Pagination from 'react-js-pagination';
+import { useSelector, useDispatch } from "react-redux";
+import { clearErrors, getRoom } from "../../actions/roomAction";
+import Loader from "../layout/Loader/Loader";
+import RoomCard from "../Home/RoomCard";
+import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
-import { useAlert } from 'react-alert';
+import { useAlert } from "react-alert";
 
 const categories = [ "Single", "Double", "Duplex"];
 const amenities = ["Swimming pool", "Car parking", "Free Wifi", "Pets allowed", "Gym", "Spa", "Dance Hall", "Bar"]
@@ -211,9 +211,8 @@ const locations = ["Agartala",
   'Warangal',
   ];
 const Rooms = ({ match }) => {
-
-    const dispatch = useDispatch();
-    const alert = useAlert();
+  const dispatch = useDispatch();
+  const alert = useAlert();
 
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0, 25000]);
@@ -253,32 +252,33 @@ const Rooms = ({ match }) => {
       }
         dispatch(getRoom(keyword, currentPage, price, category, ratings, location, amenity))
     }, [dispatch, keyword, currentPage, price,  category, ratings, location, amenity, alert, error]);
-    
-  return (
-  <Fragment>
-      { loading ? (
-      <Loader/> ) : (
-      <Fragment>
-          <h2 className='roomsHeading'>Hotels</h2>
-          
-           <div className='rooms'>
-             { rooms && 
-               rooms.map((room) => (
-                <RoomCard key={room._id} room={room}/>
-      ))}
-    </div>
+  
 
-    <div className='filterBox'>
-    <Typography variant='h5'>Price</Typography>
-    <Slider className='slider'
-      value={price}
-      onChange={priceHandler}
-      valueLabelDisplay="auto"
-      aria-labelledby="range-slider"
-      min={0}
-      max={25000}
-    />
-     </div>
+  return (
+    <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <h2 className="roomsHeading">Hotels</h2>
+
+          <div className="rooms">
+            {rooms &&
+              rooms.map((room) => <RoomCard key={room._id} room={room} />)}
+          </div>
+
+          <div className="filterBox">
+            <Typography variant="h5">Price</Typography>
+            <Slider
+              className="slider"
+              value={price}
+              onChange={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={25000}
+            />
+          </div>
 
      <div className='filterBox1'>
     <Typography variant='h5'>Type</Typography>
@@ -293,23 +293,7 @@ const Rooms = ({ match }) => {
         ))}
     </select>
     </div>
-
-{/* <div className='filterBox1'>
-<Typography>Categories</Typography>
-            <ul className='categoryBox'>
-            {categories.map((category) => (
-                <li
-                  className="category-link"
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-            </div> */}
           
-
     <div className='filterBox2'>
     
               <Typography variant ="h5" component="legend">Hotel Ratings</Typography>
@@ -354,25 +338,27 @@ const Rooms = ({ match }) => {
     </select>
     </div>
 
-    <div className='paginationBox'>
-    <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={resultPerPage}
-                totalItemsCount={roomsCount}
-                onChange={setCurrentPageNo}
-                nextPageText="NEXT"
-                prevPageText="PREV"
-                firstPageText="FIRST"
-                lastPageText="LAST"
-                itemClass="page-item"
-                linkClass="page-link"
-                activeClass="pageItemActive"
-                activeLinkClass="pageLinkActive"
-              />
-            </div>
-          </Fragment>
-          )}
-  </Fragment>
-  )};
+
+          <div className="paginationBox">
+            <Pagination
+              activePage={currentPage}
+              itemsCountPerPage={resultPerPage}
+              totalItemsCount={roomsCount}
+              onChange={setCurrentPageNo}
+              nextPageText="NEXT"
+              prevPageText="PREV"
+              firstPageText="FIRST"
+              lastPageText="LAST"
+              itemClass="page-item"
+              linkClass="page-link"
+              activeClass="pageItemActive"
+              activeLinkClass="pageLinkActive"
+            />
+          </div>
+        </Fragment>
+      )}
+    </Fragment>
+  );
+};
 
 export default Rooms;

@@ -15,9 +15,13 @@ const RoomCard = ({ room }) => {
     <Link className="roomCard" to={`/room/${room._id}`}>
       <img src={room.images[0].url} alt={room.name} />
       <p>{room.name}</p>
-      <p> <i class="fa fa-map-marker-alt" >
-      </i> {room.location}</p>
-      <div className="category"><p>Type: {room.category}</p></div>
+      <p>
+        {" "}
+        <i class="fa fa-map-marker-alt"></i> {room.location}
+      </p>
+      <div className="category">
+        <p>Type: {room.category}</p>
+      </div>
       <div>
         <ReactStars {...options} /> <span>({room.numOfReviews} reviews)</span>
       </div>

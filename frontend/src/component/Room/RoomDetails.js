@@ -69,8 +69,10 @@ const RoomDetails = ({ match }) => {
             </div>
             <div>
               <div className="detailsBlock-1">
-                <h2>{room.name}, {room.location}</h2>
-                <h3>{room.category} Type</h3>    
+                <h2>
+                  {room.name}, {room.location}
+                </h2>
+                <h3>{room.category} Type</h3>
               </div>
               <div className="detailsBlock-2">
                 <ReactStars {...options} />

@@ -57,18 +57,6 @@ export const getRoom = (keyword = "",currentPage = 1, price = [0,25000], categor
     }
     const { data } = await axios.get(link);
 
-    dispatch({
-      type: ALL_ROOM_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: ALL_ROOM_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
-
 // Get room details
 export const getRoomDetails = (id) => async (dispatch) => {
   try {

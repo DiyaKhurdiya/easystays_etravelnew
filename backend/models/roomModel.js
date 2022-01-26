@@ -48,6 +48,10 @@ const roomSchema = mongoose.Schema({
     type: String,
     required: [true, "Hotel category"],
   },
+  amenity: {
+    type: String,
+    default: "Breakfast inclusive",
+  },
   numOfReviews: {
     type: Number,
     default: 0,
@@ -79,7 +83,7 @@ const roomSchema = mongoose.Schema({
     ref: "User",
     required: true,
   },
-  
+
   createdAt: {
     type: Date,
     default: Date.now,

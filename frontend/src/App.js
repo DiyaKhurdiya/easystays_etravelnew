@@ -11,7 +11,6 @@ import Search from "./component/Room/Search";
 import Cart from "./component/Cart/Cart.js";
 
 
-
 function App() {
   return (
     <Router>
