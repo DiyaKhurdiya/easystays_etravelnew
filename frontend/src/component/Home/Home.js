@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import "./Home.css";
-import Room from "./RoomCard.js";
+import RoomCard from "./RoomCard.js";
 import MetaData from "../layout/MetaData.js";
 import { getRoom, clearErrors } from "../../actions/roomAction.js";
 import { useSelector, useDispatch } from "react-redux";
@@ -41,7 +41,7 @@ const Home = () => {
           </div>
           <h2 className="homeHeading">FEATURED ROOMS</h2>
           <div className="container" id="container">
-            {rooms && rooms.map((room) => <Room room={room} />)}
+            {rooms && rooms.map((room) => (<RoomCard key={room._id} room={room} />))}
           </div>
         </Fragment>
       )}
