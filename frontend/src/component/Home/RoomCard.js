@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 
-const RoomCard = ({ room }) => {
+const RoomCard = ({ room, fromdate, todate }) => {
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
@@ -26,6 +26,13 @@ const RoomCard = ({ room }) => {
         <ReactStars {...options} /> <span>({room.numOfReviews} reviews)</span>
       </div>
       <span>{`₹ ${room.price}/ night`}</span>
+      <div style={{ float: "right" }}>
+        {fromdate && todate && (
+          <Link to={`/room/${room._id}/${fromdate}/${todate}`}>
+            <button>Book Now</button>
+          </Link>
+        )}
+      </div>
     </Link>
   );
 };

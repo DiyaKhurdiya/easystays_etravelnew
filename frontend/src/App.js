@@ -10,7 +10,6 @@ import Rooms from "./component/Room/Rooms.js";
 import Search from "./component/Room/Search";
 import Cart from "./component/Cart/Cart.js";
 
-
 function App() {
   return (
     <Router>
@@ -19,6 +18,7 @@ function App() {
       <Route exact path="/room/:id" component={RoomDetails} />
       <Route exact path="/rooms" component={Rooms} />
       <Route path="/rooms/:keyword" component={Rooms} />
+      <Route path="/room/:id/:fromdate/:todate" component={RoomDetails} />
       <Route exact path="/search" component={Search} />
       <Route exact path="/bookings" component={Cart} />
       <Route exact path="/contact" component={Contact} />

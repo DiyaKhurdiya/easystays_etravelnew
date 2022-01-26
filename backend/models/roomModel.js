@@ -56,6 +56,7 @@ const roomSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  currentbookings: [],
   reviews: [
     {
       user: {

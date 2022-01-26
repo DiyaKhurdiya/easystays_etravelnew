@@ -6,7 +6,7 @@ import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-import {addItemsToCart} from "../../actions/cartAction";
+import { addItemsToCart } from "../../actions/cartAction";
 
 const RoomDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ const RoomDetails = ({ match }) => {
                 <h2>
                   {room.name}, {room.location}
                 </h2>
-                <h3>{room.category} Type</h3>
+                <h3>Type: {room.category} </h3>
               </div>
               <div className="detailsBlock-2">
                 <ReactStars {...options} />
@@ -86,18 +86,24 @@ const RoomDetails = ({ match }) => {
                     <input value={quantity} type="number" />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button onClick={addToCartHandler}>Book Rooms</button>
+                  <button onClick={addToCartHandler}>Reserve</button>
                 </div>
-
+                <span>
+                  From: {match.params.fromdate}
+                  To: {match.params.todate}
+                </span>
                 <p>
                   Status:
                   <b className={room.Stock < 1 ? "redColor" : "greenColor"}>
-                    {room.Stock < 1 ? "OutOfStock" : "InStock"}{" "}
+                    {room.Stock < 1 ? " Unavailable" : " Available"}{" "}
                   </b>
                 </p>
               </div>
               <div className="detailsBlock-4">
-                Amenities: <p>{room.description}</p>
+                Amenities: <p>{room.amenity}</p>
+              </div>
+              <div className="detailsBlock-4">
+                Description: <p>{room.description}</p>
               </div>
               <button className="submitReview">Submit review</button>
             </div>

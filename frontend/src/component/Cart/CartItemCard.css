@@ -1,39 +1,37 @@
 .CartItemCard {
-    display: flex;
-    padding: 1vmax;
-    height: 8vmax;
-    align-items: flex-start;
-    box-sizing: border-box;
-  }
-  
-  .CartItemCard > img {
-    width: 5vmax;
-  }
-  
-  .CartItemCard > div {
-    display: flex;
-    margin: 0.3vmax 1vmax;
-    flex-direction: column;
-  }
-  
-  .CartItemCard > div > a {
-    font: 300 1.2vmax "Bodoni Moda";
-    color: rgba(24, 24, 24, 0.815);
-    text-decoration: none;
-  }
-  
-  .CartItemCard > div > span {
-    font: 300 0.9vmax "Raleway";
-    color: rgba(24, 24, 24, 0.815);
-  }
-  
-  .CartItemCard > div > span > p {
-    color: rgb(29, 28, 28);
-    text-decoration: underline;
-    display: inline-flex;
-    margin-inline-end: 1vmax;
-    font: 100 0.8vmax "Raleway";
-    cursor: pointer;
-  }
-  
-  
+  display: flex;
+  padding: 1vmax;
+  height: 8vmax;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.CartItemCard > img {
+  width: 5vmax;
+}
+
+.CartItemCard > div {
+  display: flex;
+  margin: 0.3vmax 1vmax;
+  flex-direction: column;
+}
+
+.CartItemCard > div > a {
+  font: 300 1.2vmax "Bodoni Moda";
+  color: rgba(24, 24, 24, 0.815);
+  text-decoration: none;
+}
+
+.CartItemCard > div > span {
+  font: 300 0.9vmax "Raleway";
+  color: rgba(24, 24, 24, 0.815);
+}
+
+.CartItemCard > div > span > p {
+  color: rgb(29, 28, 28);
+  text-decoration: underline;
+  display: inline-flex;
+  margin-inline-end: 1vmax;
+  font: 100 0.8vmax "Raleway";
+  cursor: pointer;
+}
