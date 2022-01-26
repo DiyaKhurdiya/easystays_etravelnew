@@ -8,16 +8,34 @@ import Contact from "./component/Home/Contact.js";
 import RoomDetails from "./component/Room/RoomDetails.js";
 import LoginSignup from "./component/User/LoginSignup.js";
 import Rooms from "./component/Room/Rooms.js";
+import store from "./store";
+import { loadUser } from "./actions/userAction";
+import UserOptions from "./component/layout/Header/UserOptions";
+import { useSelector } from "react-redux";
+import Profile from "./component/User/Profile.js";
+import ProtectedRoute from "./component/Route/ProtectedRoute";
+import UpdateProfile from "./component/User/UpdateProfile.js";
 
 function App() {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Router>
       <Header />
+      {isAuthenticated && <UserOptions user={user} />}
+
       <Route exact path="/" component={Home} />
       <Route exact path="/room/:id" component={RoomDetails} />
       <Route exact path="/rooms" component={Rooms} />
       <Route exact path="/contact" component={Contact} />
       <Route path="/login" component={LoginSignup} />
+      <ProtectedRoute exact path="/account" component={Profile} />
+      <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
+
       <Footer />
     </Router>
   );
