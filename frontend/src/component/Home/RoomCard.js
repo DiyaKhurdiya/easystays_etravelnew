@@ -11,8 +11,25 @@ const RoomCard = ({ room, fromdate, todate }) => {
     value: room.ratings,
     isHalf: true,
   };
+
   return (
     <Link className="roomCard" to={`/room/${room._id}`}>
+      <div className="roomBadge">
+        <button
+          className={room.Stock < 3 ? "roomBadgeLowStock" : "roomNoBadge"}
+        >
+          {room.Stock < 3 ? "Few rooms left" : ""}
+        </button>
+        <button
+          className={
+            room.price < 1500 && room.ratings > 4
+              ? "roomBadgeBest"
+              : "roomNoBadge"
+          }
+        >
+          {room.price < 1500 && room.ratings > 4 ? "Value for money" : ""}
+        </button>
+      </div>
       <img src={room.images[0].url} alt={room.name} />
       <p>{room.name}</p>
       <p>
@@ -25,7 +42,7 @@ const RoomCard = ({ room, fromdate, todate }) => {
       <div>
         <ReactStars {...options} /> <span>({room.numOfReviews} reviews)</span>
       </div>
-      <span>{`₹ ${room.price}/ night`}</span>
+      <span>{`₹ ${room.price}/night`}</span>
       <div style={{ float: "right" }}>
         {fromdate && todate && (
           <Link to={`/room/${room._id}/${fromdate}/${todate}`}>
