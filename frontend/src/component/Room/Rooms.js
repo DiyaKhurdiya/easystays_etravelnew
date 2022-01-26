@@ -10,13 +10,24 @@ import Typography from "@material-ui/core/Typography";
 import { useAlert } from "react-alert";
 
 const categories = ["Single", "Double", "Duplex"];
+const amenities = [
+  "Breakfast inclusive",
+  "Bar",
+  "Gym",
+  "Swimming pool",
+  "Beach view",
+  "Mountain view",
+  "City proximity",
+  "Pet-friendly",
+  "Family-friendly",
+];
 const Rooms = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
-
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
+  const [amenity, setAmenity] = useState("");
   const [ratings, setRatings] = useState(0);
 
   const { rooms, loading, error, roomsCount, resultPerPage } = useSelector(
@@ -35,8 +46,8 @@ const Rooms = () => {
       alert.error(error);
       dispatch(clearErrors);
     }
-    dispatch(getRoom(currentPage, price, category, ratings));
-  }, [dispatch, currentPage, price, category, ratings, alert, error]);
+    dispatch(getRoom(currentPage, price, category, amenity, ratings));
+  }, [dispatch, currentPage, price, category, amenity, ratings, alert, error]);
 
   return (
     <Fragment>
@@ -101,6 +112,21 @@ const Rooms = () => {
               min={0}
               max={5}
             />
+          </div>
+
+          <div className="filterBox3">
+            <Typography>Amenities</Typography>
+            <ul className="categoryBox">
+              {amenities.map((amenity) => (
+                <li
+                  className="category-link"
+                  key={amenity}
+                  onClick={() => setAmenity(amenity)}
+                >
+                  {amenity}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="paginationBox">
