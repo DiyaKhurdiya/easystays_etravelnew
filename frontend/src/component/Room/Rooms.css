@@ -89,8 +89,25 @@
   
   }
 
+  .filterBox4 {
+    width: 12vmax;
+    position: absolute;
+    top: 15vmax;
+    left: 53vmax;
+    display: flex;
+    flex-direction: column;
+  }
+  .filterBox5 {
+    width: 12vmax;
+    position: absolute;
+    top: 15vmax;
+    left: 69vmax;
+    display: flex;
+    flex-direction: column;
+  }
   .categoryBox {
     padding: 0%;
+    color: black;
   }
 
   .category-link {

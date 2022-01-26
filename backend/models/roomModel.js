@@ -10,6 +10,10 @@ const roomSchema = mongoose.Schema({
     type: String,
     required: [true, "Hotel description"],
   },
+  amenity: {
+    type: String,
+    required: [true, "Hotel amenities"],
+  },
   location: {
     type: String,
     required: [true, "Hotel location"],
@@ -43,6 +47,10 @@ const roomSchema = mongoose.Schema({
   category: {
     type: String,
     required: [true, "Hotel category"],
+  },
+  amenity: {
+    type: String,
+    default: "Breakfast inclusive",
   },
   numOfReviews: {
     type: Number,
