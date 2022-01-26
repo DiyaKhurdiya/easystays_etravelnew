@@ -14,39 +14,48 @@ import {
   CLEAR_ERRORS,
 } from "../constants/roomConstants";
 
-export const getRoom =
-  (currentPage = 1, price = [0, 25000], category, amenity, ratings = 0) =>
-  async (dispatch) => {
-    try {
-      dispatch({ type: ALL_ROOM_REQUEST });
+export const getRoom = (keyword = "",currentPage = 1, price = [0,25000], category, ratings = 0, location, amenity ) => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_ROOM_REQUEST });
 
-      let link = `/api/v1/rooms?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+    let link = (`/api/v1/rooms?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`);
 
-      if (category) {
-        link = `/api/v1/rooms?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
-      }
-
-      if (amenity) {
-        link = `/api/v1/rooms?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&amenity=${amenity}&ratings[gte]=${ratings}`;
-      }
-
-      if (category && amenity) {
-        link = `/api/v1/rooms?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&amenity=${amenity}&ratings[gte]=${ratings}`;
-      }
-
-      const { data } = await axios.get(link);
-
-      dispatch({
-        type: ALL_ROOM_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: ALL_ROOM_FAIL,
-        payload: error.response.data.message,
-      });
+    if (category) {
+      link = `/api/v1/rooms?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
     }
-  };
+
+    if(location)
+    {
+      link = `/api/v1/rooms?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&location=${location}`;
+    }
+
+    if(amenity)
+    {
+      link = `/api/v1/rooms?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&amenity=${amenity}`;
+
+    }
+
+    if(category && amenity) {
+      link = `/api/v1/rooms?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&amenity=${amenity}`;
+
+    }
+
+    if(location && amenity) {
+      link = `/api/v1/rooms?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&location=${location}&amenity=${amenity}`;
+
+    }
+
+
+    if(category && location)
+    {
+      link = `/api/v1/rooms?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&location=${location}`;
+    }
+
+    if(category && location && amenity) {
+      link = `/api/v1/rooms?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&location=${location}&amenity=${amenity}`;
+
+    }
+    const { data } = await axios.get(link);
 
 // Get room details
 export const getRoomDetails = (id) => async (dispatch) => {
