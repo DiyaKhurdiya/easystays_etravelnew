@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import Header from "./component/layout/Header/Header.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./component/layout/Footer/Footer.js";
@@ -17,6 +17,9 @@ import ProtectedRoute from "./component/Route/ProtectedRoute";
 import UpdateProfile from "./component/User/UpdateProfile.js";
 import Search from "./component/Room/Search";
 import Cart from "./component/Cart/Cart.js";
+import UpdatePassword from "./component/User/UpdatePassword.js";
+import ForgotPassword from "./component/User/ForgotPassword.js";
+import ResetPassword from "./component/User/ResetPassword.js";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -41,6 +44,14 @@ function App() {
       <Route path="/login" component={LoginSignup} />
       <ProtectedRoute exact path="/account" component={Profile} />
       <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
+      <ProtectedRoute
+        exact
+        path="/password/update"
+        component={UpdatePassword}
+      />
+      <Route exact path="/password/forgot" component={ForgotPassword} />
+
+      <Route exact path="/password/reset/:token" component={ResetPassword} />
 
       <Footer />
     </Router>

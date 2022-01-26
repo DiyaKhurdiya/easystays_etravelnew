@@ -180,7 +180,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
   };
-  
+
   // We will add cloudinary later
   if (req.body.avatar !== "") {
     const user = await User.findById(req.user.id);
