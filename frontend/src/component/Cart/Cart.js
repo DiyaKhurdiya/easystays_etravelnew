@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
 
-  
   const { cartItems } = useSelector((state) => state.cart);
 
   // const increaseQuantity = (id, quantity, stock) => {
@@ -32,29 +31,29 @@ const Cart = () => {
 
   return (
     <Fragment>
-    {cartItems.length === 0 ? (
-      <div className="emptyList">
-        {" "}
-        <i className="fas fa-heart-broken fa-3x" aria-hidden="true"></i>{" "}
-        <p> No hotels in your wishlist</p>
-        <Link to="/rooms">VIEW HOTELS</Link>
-      </div>
-    ) : (
-    <Fragment>
-      <div className="cartPage">
-        <div className="cartHeader">
-          <p>Hotel</p>
-          
-          <p>Total</p>
+      {cartItems.length === 0 ? (
+        <div className="emptyList">
+          {" "}
+          <i className="fas fa-heart-broken fa-3x" aria-hidden="true"></i>{" "}
+          <p> No bookmarked hotels</p>
+          <Link to="/rooms">VIEW HOTELS</Link>
         </div>
-        {cartItems &&
-          cartItems.map((item) => (
-            <div className="cartContainer" key={item.room}>
-              <CartItemCard item={item} deleteCartItems={deleteCartItems}/>
-              <div className="cartInput">
-               <button>Book again!</button>
-               
-                {/* <button
+      ) : (
+        <Fragment>
+          <div className="cartPage">
+            <div className="cartHeader">
+              <p>Hotel</p>
+
+              <p>Total</p>
+            </div>
+            {cartItems &&
+              cartItems.map((item) => (
+                <div className="cartContainer" key={item.room}>
+                  <CartItemCard item={item} deleteCartItems={deleteCartItems} />
+                  <div className="cartInput">
+                    <button>Book now!</button>
+
+                    {/* <button
                   onClick={() =>
                     decreaseQuantity(item.room, item.quantity, item.stock)
                   }
@@ -69,24 +68,25 @@ const Cart = () => {
                 >
                   +
                 </button> */}
-              </div>
-              <p className="cartSubtotal">{`₹${item.price * item.quantity}`}</p>
-            </div>
-          ))}
+                  </div>
+                  <p className="cartSubtotal">{`₹${
+                    item.price * item.quantity
+                  }`}</p>
+                </div>
+              ))}
 
-        {/* <div className="cartGrossProfit">
+            {/* <div className="cartGrossProfit">
          
           
           <div className="checkOutButton">
             <button> Check Out</button>
           </div>
         </div> */}
-      </div>
-    </Fragment>
-    )}
+          </div>
+        </Fragment>
+      )}
     </Fragment>
   );
 };
-
 
 export default Cart;

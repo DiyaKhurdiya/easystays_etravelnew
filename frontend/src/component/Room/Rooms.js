@@ -15,14 +15,18 @@ import moment from "moment";
 const { RangePicker } = DatePicker;
 const categories = ["Single", "Double", "Duplex"];
 const amenities = [
+  "Breakfast inclusive",
   "Swimming pool",
   "Car parking",
   "Free Wifi",
   "Pets allowed",
   "Gym",
   "Spa",
-  "Dance Hall",
+  "Dance hall",
   "Bar",
+  "City view",
+  "Beach view",
+  "Mountain view",
 ];
 const locations = [
   "Agartala",

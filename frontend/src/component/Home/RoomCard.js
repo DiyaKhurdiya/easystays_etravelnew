@@ -29,6 +29,21 @@ const RoomCard = ({ room, fromdate, todate }) => {
         >
           {room.price < 1500 && room.ratings > 4 ? "Value for money" : ""}
         </button>
+        <button
+          className={
+            room.amenity === "City view" ||
+            room.amenity === "Beach view" ||
+            room.amenity === "Mountain view"
+              ? "roomBadgeView"
+              : "roomNoBadge"
+          }
+        >
+          {room.amenity === "City view" ||
+          room.amenity === "Beach view" ||
+          room.amenity === "Mountain view"
+            ? "Great view"
+            : ""}
+        </button>
       </div>
       <img src={room.images[0].url} alt={room.name} />
       <p>{room.name}</p>
