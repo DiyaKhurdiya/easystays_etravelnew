@@ -6,7 +6,6 @@ import { getRoom, clearErrors } from "../../actions/roomAction.js";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-import image1 from "../Home/images/room.png";
 
 const Home = () => {
   const alert = useAlert();
@@ -29,19 +28,11 @@ const Home = () => {
         <Fragment>
           <MetaData title="Welcome to EasyStays.com!" />
           <img src="" alt=""></img>
-          <div className="banner">
-            <div className="slider">
-              <div className="slider-image">
-                <img src={image1} alt="" />
-              </div>
-              <input type="radio" name="radio-btn" />
-              <input type="radio" name="radio-btn" />
-              <input type="radio" name="radio-btn" />
-            </div>
-          </div>
+          <div className="banner"></div>
           <h2 className="homeHeading">FEATURED ROOMS</h2>
           <div className="container" id="container">
-            {rooms && rooms.map((room) => (<RoomCard key={room._id} room={room} />))}
+            {rooms &&
+              rooms.map((room) => <RoomCard key={room._id} room={room} />)}
           </div>
         </Fragment>
       )}

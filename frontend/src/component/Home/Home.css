@@ -3,7 +3,7 @@ body {
 }
 
 .banner {
-  background-color: black;
+  background-image: url("../../../src/images/bannerfin1.png");
   background-size: cover;
   height: 720px;
   display: flex;
