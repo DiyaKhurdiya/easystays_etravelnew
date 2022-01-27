@@ -1,6 +1,10 @@
 const express = require("express");
 const {
-  newBooking, getSingleBooking, myBookings, deleteBooking, updateBooking
+  newBooking,
+  getSingleBooking,
+  myBookings,
+  deleteBooking,
+  updateBooking,
 } = require("../controllers/bookingController");
 const router = express.Router();
 
@@ -16,4 +20,5 @@ router
   .route("/admin/booking/:id")
   .put(isAuthenticatedUser, authorizeRoles("admin"), updateBooking)
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteBooking);
+
 module.exports = router;

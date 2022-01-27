@@ -1,14 +1,22 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { roomDetailsReducer, roomReducer } from "./reducers/roomReducer";
+import {
+  newReviewReducer,
+  roomDetailsReducer,
+  roomReducer,
+} from "./reducers/roomReducer";
 import {
   forgotPasswordReducer,
   profileReducer,
   userReducer,
 } from "./reducers/userReducer";
 import { cartReducer } from "./reducers/cartReducer";
-import { newBookingReducer } from "./reducers/bookingReducer";
+import {
+  bookingDetailsReducer,
+  myBookingsReducer,
+  newBookingReducer,
+} from "./reducers/bookingReducer";
 
 const reducer = combineReducers({
   rooms: roomReducer,
@@ -18,6 +26,9 @@ const reducer = combineReducers({
   forgotPassword: forgotPasswordReducer,
   cart: cartReducer,
   newBooking: newBookingReducer,
+  myBookings: myBookingsReducer,
+  bookingDetails: bookingDetailsReducer,
+  newReview: newReviewReducer,
 });
 
 let initialState = {
@@ -25,7 +36,7 @@ let initialState = {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
-      shippingInfo: localStorage.getItem("shippingInfo")
+    shippingInfo: localStorage.getItem("shippingInfo")
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
   },

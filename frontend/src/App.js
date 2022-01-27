@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Header from "./component/layout/Header/Header.js";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./component/layout/Footer/Footer.js";
 import Home from "./component/Home/Home.js";
 import Contact from "./component/Home/Contact.js";
@@ -21,13 +21,15 @@ import UpdatePassword from "./component/User/UpdatePassword.js";
 import ForgotPassword from "./component/User/ForgotPassword.js";
 import ResetPassword from "./component/User/ResetPassword.js";
 import Shipping from "./component/Cart/Shipping.js";
-import ConfirmOrder from "./component/Cart/ConfirmOrder.js"
+import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
 import axios from "axios";
 import Payment from "./component/Cart/Payment.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import BookingSuccess from "./component/Cart/BookingSuccess.js";
-import Attractions from "./component/Home/Attractions";
+import Attractions from "./component/Home/Attractions.js";
+import MyBookings from "./component/Booking/myBookings.js";
+import BookingDetails from "./component/Booking/bookingDetails.js";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -50,7 +52,6 @@ function App() {
     <Router>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
-
       <Route exact path="/" component={Home} />
       <Route exact path="/room/:id" component={RoomDetails} />
       <Route exact path="/rooms" component={Rooms} />
@@ -69,18 +70,24 @@ function App() {
         component={UpdatePassword}
       />
       <Route exact path="/password/forgot" component={ForgotPassword} />
-
       <Route exact path="/password/reset/:token" component={ResetPassword} />
-
       <ProtectedRoute exact path="/shipping" component={Shipping} />
-      <ProtectedRoute exact path="/booking/confirm" component={ConfirmOrder} />
-      <ProtectedRoute exact path="/success" component={BookingSuccess} />
-
       {stripeApiKey && (
-      <Elements stripe={loadStripe(stripeApiKey)}>
-        <ProtectedRoute exact path="/process/payment" component={Payment} />
-      </Elements>)}
+        <Elements stripe={loadStripe(stripeApiKey)}>
+          <ProtectedRoute exact path="/process/payment" component={Payment} />
+        </Elements>
+      )}
+      <ProtectedRoute exact path="/success" component={BookingSuccess} />
+      <ProtectedRoute exact path="/bookings" component={MyBookings} />
 
+      <Switch>
+        <ProtectedRoute
+          exact
+          path="/booking/confirm"
+          component={ConfirmOrder}
+        />
+        <ProtectedRoute exact path="/booking/:id" component={BookingDetails} />
+      </Switch>
       <Footer />
     </Router>
   );

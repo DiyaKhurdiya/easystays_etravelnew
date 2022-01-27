@@ -1,15 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
+import { Rating } from "@material-ui/lab";
 
 const RoomCard = ({ room, fromdate, todate }) => {
   const options = {
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    activeColor: "gold",
-    size: window.innerWidth < 600 ? 20 : 25,
     value: room.ratings,
-    isHalf: true,
+    readOnly: true,
+    precision: 0.5,
   };
 
   return (
@@ -54,7 +51,7 @@ const RoomCard = ({ room, fromdate, todate }) => {
         <p>Type: {room.category}</p>
       </div>
       <div>
-        <ReactStars {...options} /> <span>({room.numOfReviews} reviews)</span>
+        <Rating {...options} /> <span>({room.numOfReviews} reviews)</span>
       </div>
       <span>{`₹ ${room.price}/night`}</span>
       <div style={{ float: "right" }}>

@@ -89,6 +89,7 @@ export const getRoomDetails = (id) => async (dispatch) => {
     });
   }
 };
+
 // New Review
 export const newReview = (reviewData) => async (dispatch) => {
   try {
