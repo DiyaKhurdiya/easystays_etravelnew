@@ -74,7 +74,7 @@ const RoomDetails = ({ match, history }) => {
             <div>
               <div className="detailsBlock-1">
                 <h2>
-                  {room.name}, <br /> {room.location}
+                  {room.name}, {room.location}
                 </h2>
                 <h3>Type: {room.category} </h3>
               </div>
@@ -83,7 +83,7 @@ const RoomDetails = ({ match, history }) => {
                 <span> ({room.numOfReviews} reviews)</span>
               </div>
               <div className="detailsBlock-3">
-                <h1>{` ₹ ${room.price}/ night`}</h1>
+                <h1>{` ₹ ${room.price}/night`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>-</button>
@@ -91,12 +91,14 @@ const RoomDetails = ({ match, history }) => {
                     <button onClick={increaseQuantity}>+</button>
                   </div>
                   <button onClick={checkoutHandler}>Reserve</button>
-                  <button onClick={addToCartHandler}>Wishlist</button>
+                  <button onClick={addToCartHandler}>BOOKMARK</button>
                 </div>
                 {match.params.fromdate && match.params.todate && (
                   <span>
-                    From: {match.params.fromdate} <br />
-                    To: {match.params.todate}
+                    <p>
+                      From: {match.params.fromdate} <br />
+                      To: {match.params.todate}
+                    </p>
                   </span>
                 )}
                 <p>
@@ -112,11 +114,11 @@ const RoomDetails = ({ match, history }) => {
               <div className="detailsBlock-4">
                 Description: <p>{room.description}</p>
               </div>
-              <button className="submitReview">Submit review</button>
+              <button className="submitReview">SUBMIT REVIEW</button>
             </div>
           </div>
 
-          <h3 className="reviewsHeading">REVIEWS</h3>
+          <h3 className="reviewsHeading">Reviews</h3>
 
           {room.reviews && room.reviews[0] ? (
             <div className="reviews">

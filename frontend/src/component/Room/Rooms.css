@@ -64,8 +64,9 @@
 .filterBox {
   width: 12vmax;
   position: absolute;
+  font-size: 1.1vmax;
   top: 15vmax;
-  left: 4vmax;
+  left: 25vmax;
   display: flex;
   flex-direction: column;
 }
@@ -73,8 +74,9 @@
 .filterBox1 {
   width: 12vmax;
   position: absolute;
-  top: 15vmax;
-  left: 23vmax;
+  font-size: 1.1vmax;
+  top: 7.5vmax;
+  left: 63vmax;
   display: flex;
   flex-direction: column;
 }
@@ -82,8 +84,9 @@
 .filterBox2 {
   width: 12vmax;
   position: absolute;
+  font-size: 1.1vmax;
   top: 15vmax;
-  left: 38vmax;
+  left: 44vmax;
   display: flex;
   flex-direction: column;
 }
@@ -91,19 +94,33 @@
 .filterBox4 {
   width: 12vmax;
   position: absolute;
-  top: 15vmax;
-  left: 53vmax;
+  font-size: 1.1vmax;
+  top: 7.5vmax;
+  left: 25vmax;
   display: flex;
   flex-direction: column;
 }
+
 .filterBox5 {
   width: 12vmax;
   position: absolute;
+  font-size: 1.1vmax;
   top: 15vmax;
-  left: 69vmax;
+  left: 63vmax;
   display: flex;
   flex-direction: column;
 }
+
+.filterBox6 {
+  width: 18vmax;
+  position: absolute;
+  font-size: 1.1vmax;
+  top: 9.5vmax;
+  left: 41vmax;
+  display: flex;
+  flex-direction: column;
+}
+
 .categoryBox {
   padding: 0%;
   color: black;

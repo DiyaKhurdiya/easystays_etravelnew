@@ -27,6 +27,7 @@ import Payment from "./component/Cart/Payment.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import BookingSuccess from "./component/Cart/BookingSuccess.js";
+import Attractions from "./component/Home/Attractions";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -57,6 +58,7 @@ function App() {
       <Route path="/room/:id/:fromdate/:todate" component={RoomDetails} />
       <Route exact path="/search" component={Search} />
       <Route exact path="/wishlist" component={Cart} />
+      <Route exact path="/attractions" component={Attractions} />
       <Route exact path="/contact" component={Contact} />
       <Route exact path="/login" component={LoginSignup} />
       <ProtectedRoute exact path="/account" component={Profile} />

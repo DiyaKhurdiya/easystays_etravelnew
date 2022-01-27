@@ -6,7 +6,6 @@ import Loader from "../layout/Loader/Loader";
 import RoomCard from "../Home/RoomCard";
 import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
-import Typography from "@material-ui/core/Typography";
 import { useAlert } from "react-alert";
 import "antd/dist/antd.css";
 import { DatePicker, Space } from "antd";
@@ -15,14 +14,18 @@ import moment from "moment";
 const { RangePicker } = DatePicker;
 const categories = ["Single", "Double", "Duplex"];
 const amenities = [
+  "Breakfast inclusive",
   "Swimming pool",
   "Car parking",
   "Free Wifi",
   "Pets allowed",
   "Gym",
   "Spa",
-  "Dance Hall",
+  "Dance hall",
   "Bar",
+  "City view",
+  "Beach view",
+  "Mountain view",
 ];
 const locations = [
   "Agartala",
@@ -296,12 +299,37 @@ const Rooms = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          <RangePicker
-            style={{ height: "38px" }}
-            format="DD-MM-YYYY"
-            onChange={filterByDate}
-            className="m-2"
-          />
+          <div className="filterBox4">
+            <p>Location</p>
+            <select
+              className="locationBox"
+              value={location}
+              onChange={setLocationType}
+            >
+              <option value="">All</option>
+              {locations.map((location) => (
+                <option value={location} key={location}>
+                  {location}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="filterBox6">
+            <RangePicker
+              style={{ height: "38px" }}
+              format="DD-MM-YYYY"
+              onChange={filterByDate}
+              className="m-2"
+            />
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <div className="rooms">
             {rooms &&
               rooms.map((room) => (
@@ -314,7 +342,7 @@ const Rooms = ({ match }) => {
               ))}
           </div>
           <div className="filterBox">
-            <Typography variant="h5">Price</Typography>
+            <p>Price</p>
             <Slider
               className="slider"
               value={price}
@@ -327,7 +355,7 @@ const Rooms = ({ match }) => {
           </div>
 
           <div className="filterBox1">
-            <Typography variant="h5">Type</Typography>
+            <p>Type</p>
             <select
               className="categoryBox"
               value={category}
@@ -343,9 +371,7 @@ const Rooms = ({ match }) => {
           </div>
 
           <div className="filterBox2">
-            <Typography variant="h5" component="legend">
-              Hotel Ratings
-            </Typography>
+            <p>Hotel Ratings</p>
             <Slider
               value={ratings}
               onChange={(e, newRating) => {
@@ -357,25 +383,8 @@ const Rooms = ({ match }) => {
               max={5}
             />
           </div>
-
-          <div className="filterBox4">
-            <Typography variant="h5">Location</Typography>
-            <select
-              className="locationBox"
-              value={location}
-              onChange={setLocationType}
-            >
-              <option value="">All</option>
-              {locations.map((location) => (
-                <option value={location} key={location}>
-                  {location}
-                </option>
-              ))}
-            </select>
-          </div>
-
           <div className="filterBox5">
-            <Typography variant="h5">Amenities</Typography>
+            <p>Amenities</p>
             <select
               className="amenityBox"
               value={amenity}
