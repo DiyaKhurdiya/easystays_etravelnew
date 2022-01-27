@@ -8,7 +8,7 @@ import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import { addItemsToCart } from "../../actions/cartAction";
 
-const RoomDetails = ({ match }) => {
+const RoomDetails = ({ match, history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -30,7 +30,11 @@ const RoomDetails = ({ match }) => {
 
   const addToCartHandler = () => {
     dispatch(addItemsToCart(match.params.id, quantity));
-    alert.success("Hotel Booked! Kindly proceed to payment");
+    alert.success("Hotel added to wishlist");
+  };
+
+  const checkoutHandler = () => {
+    history.push("/login?redirect=shipping");
   };
 
   useEffect(() => {
@@ -70,7 +74,7 @@ const RoomDetails = ({ match }) => {
             <div>
               <div className="detailsBlock-1">
                 <h2>
-                  {room.name}, {room.location}
+                  {room.name}, <br /> {room.location}
                 </h2>
                 <h3>Type: {room.category} </h3>
               </div>
@@ -86,12 +90,15 @@ const RoomDetails = ({ match }) => {
                     <input value={quantity} type="number" />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button onClick={addToCartHandler}>Reserve</button>
+                  <button onClick={checkoutHandler}>Reserve</button>
+                  <button onClick={addToCartHandler}>Wishlist</button>
                 </div>
-                <span>
-                  From: {match.params.fromdate}
-                  To: {match.params.todate}
-                </span>
+                {match.params.fromdate && match.params.todate && (
+                  <span>
+                    From: {match.params.fromdate} <br />
+                    To: {match.params.todate}
+                  </span>
+                )}
                 <p>
                   Status:
                   <b className={room.Stock < 1 ? "redColor" : "greenColor"}>

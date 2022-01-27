@@ -49,6 +49,14 @@ const roomSchema = mongoose.Schema({
     type: String,
     required: [true, "Hotel category"],
   },
+  from: {
+    type: String,
+    required: [true, "Available from"],
+  },
+  to: {
+    type: String,
+    required: [true, "Available to"],
+  },
   numOfReviews: {
     type: Number,
     default: 0,
