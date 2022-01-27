@@ -5,7 +5,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(231, 231, 231);
+  background: linear-gradient(
+      rgba(214, 214, 214, 0.5),
+      rgba(214, 214, 214, 0.5)
+    ),
+    url("../../../src/images/bg2.jpg");
+  background-size: cover;
   position: fixed;
   top: 0%;
   left: 0;
@@ -24,7 +29,7 @@
   width: 50%;
   outline: none;
   border-radius: 0%;
-  font: 300 1.1vmax "Raleway";
+  font: 300 1.1vmax "Oxygen";
   box-sizing: border-box;
   height: 8%;
 }
@@ -32,13 +37,13 @@
 .searchBox > input[type="submit"] {
   height: 8%;
   border-radius: 0%;
-  background-color: rgb(24, 23, 23);
+  background-color: #184599;
+  color: white;
+  font: 300 1.1vmax "Poppins";
   border: none;
   padding: 1vmax;
   width: 10%;
-  font: 300 1.1vmax "Raleway";
   cursor: pointer;
-  color: #998d79;
   transition: all 0.4s;
 }
 

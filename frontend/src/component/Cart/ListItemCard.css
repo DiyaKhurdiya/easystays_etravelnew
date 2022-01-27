@@ -4,10 +4,11 @@
   height: 8vmax;
   align-items: flex-start;
   box-sizing: border-box;
+  margin: 2vmax;
 }
 
 .ListItemCard > img {
-  width: 5vmax;
+  width: 15vmax;
 }
 
 .ListItemCard > div {
@@ -17,20 +18,27 @@
 }
 
 .ListItemCard > div > a {
-  font: 300 1.2vmax "Bodoni Moda";
+  font: 600 1.4vmax "Poppins";
   color: rgba(24, 24, 24, 0.815);
   text-decoration: none;
 }
 
 .ListItemCard > div > span {
-  font: 300 0.9vmax "Raleway";
+  font: 300 0.9vmax "Oxygen";
+  margin-top: 0.5vmax;
   color: rgba(24, 24, 24, 0.815);
 }
 
 .ListItemCard > div > p {
+  font: 300 1vmax "Oxygen";
+  margin-top: 1vmax;
+}
+
+.ListItemCard > div > p:last-of-type {
   color: rgb(29, 28, 28);
+  margin-top: 1vmax;
   text-decoration: underline;
-  font: 100 0.8vmax "Raleway";
+  font: 100 0.8vmax "Oxygen";
   cursor: pointer;
 }
 

@@ -10,20 +10,22 @@
 }
 
 .fa-heart-broken {
-  color: #a77066;
+  color: #d32203;
 }
 
 .emptyList > p {
-  font-size: 2vmax;
-  font-family: "Bodoni Moda", sans-serif;
+  font-size: 1.8vmax;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
 }
+
 .emptyList > a {
-  background-color: rgb(24, 23, 23);
-  color: #998d79;
+  background-color: #242424;
+  color: white;
   border: none;
   padding: 1vmax 3vmax;
   cursor: pointer;
-  font: 400 1vmax "Raleway";
+  font: 400 1vmax "Poppins";
   text-decoration: none;
 }
 
@@ -32,14 +34,14 @@
 }
 
 .listHeader {
-  background-color: #a77066;
+  background-color: #222222;
   width: 90%;
   box-sizing: border-box;
   margin: auto;
   color: white;
   display: grid;
   grid-template-columns: 4fr 1fr 1fr;
-  font: 300 1vmax "Raleway";
+  font: 300 1vmax "Oxygen";
 }
 
 .listHeader > p {
@@ -79,10 +81,10 @@
 .listInput > input {
   border: none;
   padding: 0.5vmax;
-  width: 1vmax;
+  width: 1.8vmax;
   text-align: center;
   outline: none;
-  font: 400 0.8vmax "Raleway";
+  font: 400 0.8vmax "Oxygen";
   color: rgba(0, 0, 0, 0.74);
 }
 
@@ -92,7 +94,7 @@
   height: 8vmax;
   align-items: center;
   box-sizing: border-box;
-  font: 300 1vmax "Raleway";
+  font: 300 1vmax "Oxygen";
   justify-content: flex-end;
   color: rgba(0, 0, 0, 0.753);
 }
@@ -107,7 +109,7 @@
   margin: 1vmax 4vmax;
   box-sizing: border-box;
   padding: 2vmax 0;
-  font: 300 1vmax "Raleway";
+  font: 300 1vmax "Oxygen";
   display: flex;
   justify-content: space-between;
 }
@@ -120,7 +122,7 @@
 
   .listHeader {
     width: 100%;
-    font: 300 1.7vmax "Raleway";
+    font: 300 1.7vmax "Oxygen";
     grid-template-columns: 3fr 1fr 1fr;
   }
 
@@ -140,13 +142,13 @@
   .listInput > input {
     width: 2vmax;
     padding: 1.5vmax;
-    font: 400 1.8vmax "Raleway";
+    font: 400 1.8vmax "Oxygen";
   }
 
   .listSubtotal {
     padding: 1.5vmax;
     height: 20vmax;
-    font: 300 2vmax "Raleway";
+    font: 300 2vmax "Oxygen";
   }
 
   .listGrossProfit {
@@ -156,12 +158,12 @@
 
   .listGrossProfitBox {
     padding: 2vmax;
-    font: 300 2vmax "Raleway";
+    font: 300 2vmax "Oxygen";
   }
 
   .checkOutBtn > button {
     padding: 2vmax 4vmax;
     width: 100%;
-    font: 300 2vmax "Raleway";
+    font: 300 2vmax "Oxygen";
   }
 }

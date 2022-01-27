@@ -16,15 +16,31 @@ const bookingSchema = new mongoose.Schema(
         required: true,
       },
     },
-    roomName: {
-      type: String,
-      required: true,
-    },
-    room: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Room",
-      required: true,
-    },
+    bookingItems: [
+      {
+        name: {
+          type: String,
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+        image: {
+          type: String,
+          required: true,
+        },
+        room: {
+          type: mongoose.Schema.ObjectId,
+          ref: "Room",
+          required: true,
+        },
+      },
+    ],
     quantity: {
       type: Number,
       required: true,

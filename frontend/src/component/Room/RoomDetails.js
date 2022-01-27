@@ -138,7 +138,7 @@ const RoomDetails = ({ match, history }) => {
                   >
                     Reserve
                   </button>
-                  <button onClick={addToListHandler}>BOOKMARK</button>
+                  <button onClick={addToListHandler}>Bookmark</button>
                 </div>
                 {match.params.fromdate && match.params.todate && (
                   <span>

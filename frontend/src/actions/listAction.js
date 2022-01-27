@@ -13,6 +13,7 @@ export const addItemsToList = (id, quantity) => async (dispatch, getState) => {
       price: data.room.price,
       image: data.room.images[0].url,
       stock: data.room.Stock,
+      location: data.room.location,
       quantity,
     },
   });
