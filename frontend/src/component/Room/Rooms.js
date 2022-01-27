@@ -341,7 +341,6 @@ const Rooms = ({ match }) => {
                 />
               ))}
           </div>
-
           <div className="filterBox">
             <p>Price</p>
             <Slider

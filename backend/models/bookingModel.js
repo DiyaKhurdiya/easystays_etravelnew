@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const bookingSchema = new mongoose.Schema(
   {
     address: {
+      state: {
+        type: String,
+        required: true,
+      },
       country: {
         type: String,
         required: true,

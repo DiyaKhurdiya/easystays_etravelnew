@@ -8,7 +8,7 @@ import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import { addItemsToCart } from "../../actions/cartAction";
 
-const RoomDetails = ({ match }) => {
+const RoomDetails = ({ match, history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -30,7 +30,11 @@ const RoomDetails = ({ match }) => {
 
   const addToCartHandler = () => {
     dispatch(addItemsToCart(match.params.id, quantity));
-    alert.success("Hotel Booked! Kindly proceed to payment");
+    alert.success("Hotel added to wishlist");
+  };
+
+  const checkoutHandler = () => {
+    history.push("/login?redirect=shipping");
   };
 
   useEffect(() => {
@@ -86,7 +90,7 @@ const RoomDetails = ({ match }) => {
                     <input value={quantity} type="number" />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button>RESERVE</button>
+                  <button onClick={checkoutHandler}>Reserve</button>
                   <button onClick={addToCartHandler}>BOOKMARK</button>
                 </div>
                 {match.params.fromdate && match.params.todate && (

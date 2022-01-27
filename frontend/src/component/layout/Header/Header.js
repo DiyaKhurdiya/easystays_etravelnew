@@ -27,6 +27,9 @@ const Header = () => {
         <a className="search-btn" href="\search">
           <i className="fa fa-search" aria-hidden="true"></i>
         </a>
+        <a className="bookings-btn" href="\wishlist">
+          <i className="fa fa-heart" aria-hidden="true"></i>
+        </a>
         <a className="bookings-btn" href="\bookings">
           <i className="far fa-calendar-alt" aria-hidden="true"></i>
         </a>
