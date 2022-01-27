@@ -42,7 +42,6 @@ const Payment = ({ history }) => {
     totalAmount: bookingInfo.subtotal,
   };
 
-
   const submitHandler = async (e) => {
     e.preventDefault();
 

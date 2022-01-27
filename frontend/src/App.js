@@ -16,7 +16,6 @@ import Profile from "./component/User/Profile.js";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
 import UpdateProfile from "./component/User/UpdateProfile.js";
 import Search from "./component/Room/Search";
-import Cart from "./component/Cart/Cart.js";
 import UpdatePassword from "./component/User/UpdatePassword.js";
 import ForgotPassword from "./component/User/ForgotPassword.js";
 import ResetPassword from "./component/User/ResetPassword.js";
@@ -30,6 +29,7 @@ import BookingSuccess from "./component/Cart/BookingSuccess.js";
 import Attractions from "./component/Home/Attractions.js";
 import MyBookings from "./component/Booking/myBookings.js";
 import BookingDetails from "./component/Booking/bookingDetails.js";
+import Wishlist from "./component/Cart/Wishlist";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -58,7 +58,7 @@ function App() {
       <Route path="/rooms/:keyword" component={Rooms} />
       <Route path="/room/:id/:fromdate/:todate" component={RoomDetails} />
       <Route exact path="/search" component={Search} />
-      <Route exact path="/wishlist" component={Cart} />
+      <Route exact path="/wishlist" component={Wishlist} />
       <Route exact path="/attractions" component={Attractions} />
       <Route exact path="/contact" component={Contact} />
       <Route exact path="/login" component={LoginSignup} />

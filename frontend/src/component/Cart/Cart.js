@@ -4,7 +4,7 @@ import CartItemCard from "./CartItemCard";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItemsFromCart } from "../../actions/cartAction";
 import { Link } from "react-router-dom";
-const Cart = ({ history}) => {
+const Cart = ({ history }) => {
   const dispatch = useDispatch();
 
   const { cartItems } = useSelector((state) => state.cart);
@@ -28,6 +28,7 @@ const Cart = ({ history}) => {
   const deleteCartItems = (id) => {
     dispatch(removeItemsFromCart(id));
   };
+
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping");
   };
@@ -41,7 +42,7 @@ const Cart = ({ history}) => {
           <p> No bookmarked hotels</p>
           <Link to="/rooms">VIEW HOTELS</Link>
         </div>
-      ):(
+      ) : (
         <Fragment>
           <div className="cartPage">
             <div className="cartHeader">
@@ -49,14 +50,14 @@ const Cart = ({ history}) => {
 
               <p>Total</p>
             </div>
-        {cartItems &&
-          cartItems.map((item) => (
-            <div className="cartContainer" key={item.room}>
-              <CartItemCard item={item} deleteCartItems={deleteCartItems}/>
-              <div className="cartInput">
-               <button onClick ={checkoutHandler}>Book now!</button>
-               
-                {/* <button
+            {cartItems &&
+              cartItems.map((item) => (
+                <div className="cartContainer" key={item.room}>
+                  <CartItemCard item={item} deleteCartItems={deleteCartItems} />
+                  <div className="cartInput">
+                    <button onClick={checkoutHandler}>Book now!</button>
+
+                    {/* <button
                   onClick={() =>
                     decreaseQuantity(item.room, item.quantity, item.stock)
                   }

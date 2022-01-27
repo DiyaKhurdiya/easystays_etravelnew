@@ -6,6 +6,7 @@ import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import { addItemsToCart } from "../../actions/cartAction";
+import { addItemsToList } from "../../actions/listAction";
 import {
   Dialog,
   DialogActions,
@@ -50,9 +51,9 @@ const RoomDetails = ({ match, history }) => {
     setQuantity(qty);
   };
 
-  const addToCartHandler = () => {
-    dispatch(addItemsToCart(match.params.id, quantity));
-    alert.success("Hotel added to wishlist");
+  const addToListHandler = () => {
+    dispatch(addItemsToList(match.params.id, quantity));
+    alert.success("Room saved for later!");
   };
 
   const submitReviewToggle = () => {
@@ -72,6 +73,7 @@ const RoomDetails = ({ match, history }) => {
   };
 
   const checkoutHandler = () => {
+    dispatch(addItemsToCart(match.params.id, quantity));
     history.push("/login?redirect=shipping");
   };
 
@@ -130,13 +132,13 @@ const RoomDetails = ({ match, history }) => {
                     <input value={quantity} type="number" />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button onClick={checkoutHandler}>Reserve</button>
                   <button
                     disabled={room.Stock < 1 ? true : false}
-                    onClick={addToCartHandler}
+                    onClick={checkoutHandler}
                   >
-                    BOOKMARK
+                    Reserve
                   </button>
+                  <button onClick={addToListHandler}>BOOKMARK</button>
                 </div>
                 {match.params.fromdate && match.params.todate && (
                   <span>

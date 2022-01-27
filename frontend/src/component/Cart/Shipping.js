@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction";
 import MetaData from "../layout/MetaData";
 import EmailIcon from "@material-ui/icons/Email";
-import MessageIcon from '@material-ui/icons/Message';
-import ScheduleIcon from '@material-ui/icons/Schedule';
+import MessageIcon from "@material-ui/icons/Message";
+import ScheduleIcon from "@material-ui/icons/Schedule";
 import PublicIcon from "@material-ui/icons/Public";
 import PhoneIcon from "@material-ui/icons/Phone";
 import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
@@ -18,7 +18,6 @@ const Shipping = ({ history }) => {
   const alert = useAlert();
   const { shippingInfo } = useSelector((state) => state.cart);
 
-  
   const [state, setState] = useState(shippingInfo.state);
   const [country, setCountry] = useState(shippingInfo.country);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
@@ -33,9 +32,7 @@ const Shipping = ({ history }) => {
       alert.error("Phone Number should be 10 digits Long");
       return;
     }
-    dispatch(
-      saveShippingInfo({state, country, phoneNo, email, needs, time })
-    );
+    dispatch(saveShippingInfo({ state, country, phoneNo, email, needs, time }));
     history.push("/booking/confirm");
   };
 
@@ -119,8 +116,7 @@ const Shipping = ({ history }) => {
               <MessageIcon />
               <input
                 type="text"
-                placeholder="Any special requests(optional)"
-                
+                placeholder="Any special requests (optional)"
                 value={needs}
                 onChange={(e) => setNeeds(e.target.value)}
               />
@@ -130,8 +126,7 @@ const Shipping = ({ history }) => {
               <ScheduleIcon />
               <input
                 type="text"
-                placeholder="Estimated arrival time(optional) "
-                
+                placeholder="Estimated arrival time (optional) "
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
               />

@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
 import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
+import { removeItemsFromCart } from "../../actions/cartAction";
 
 const ConfirmOrder = ({ history }) => {
+  const dispatch = useDispatch();
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
 
@@ -14,6 +16,10 @@ const ConfirmOrder = ({ history }) => {
     (acc, item) => acc + item.quantity * item.price,
     0
   );
+
+  const deleteCartItems = (id) => {
+    dispatch(removeItemsFromCart(id));
+  };
 
   const address = `${shippingInfo.state}, ${shippingInfo.country}`;
 
@@ -59,22 +65,22 @@ const ConfirmOrder = ({ history }) => {
             <div className="confirmCartItemsContainer">
               {cartItems &&
                 cartItems.map((item) => (
-                  <div key={item.product}>
-                    <img src={item.image} alt="Product" />
-                    <Link to={`/product/${item.product}`}>
-                      {item.name}
-                    </Link>{" "}
-                    <p>Subtotal:<span>₹{subtotal}</span></p>
+                  <div key={item.room}>
+                    <img src={item.image} alt="Room" />
+                    <Link to={`/room/${item.room}`}>{item.name}</Link>{" "}
+                    <p>
+                      Subtotal:<span>₹{subtotal}</span>
+                    </p>
+                    <p onClick={() => deleteCartItems(item.room)}>Remove</p>
                   </div>
                 ))}
             </div>
           </div>
-          <div className= "orderSummary">
+          <div className="orderSummary">
             <button onClick={proceedToPayment}>Proceed To Payment</button>
           </div>
         </div>
         {/*  */}
-        
       </div>
     </Fragment>
   );

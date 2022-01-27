@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { Typography, Stepper, StepLabel, Step } from "@material-ui/core";
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import LibraryAddCheckIcon from "@material-ui/icons/LibraryAddCheck";
-import PaymentIcon from '@material-ui/icons/Payment';
+import PaymentIcon from "@material-ui/icons/Payment";
 import "./CheckoutSteps.css";
 
 const CheckoutSteps = ({ activeStep }) => {

@@ -8,7 +8,7 @@ import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 import "antd/dist/antd.css";
-import { DatePicker, Space } from "antd";
+import { DatePicker } from "antd";
 import moment from "moment";
 
 const { RangePicker } = DatePicker;

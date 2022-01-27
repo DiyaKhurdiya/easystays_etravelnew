@@ -12,6 +12,7 @@ import {
   userReducer,
 } from "./reducers/userReducer";
 import { cartReducer } from "./reducers/cartReducer";
+import { listReducer } from "./reducers/listReducer";
 import {
   bookingDetailsReducer,
   myBookingsReducer,
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   profile: profileReducer,
   forgotPassword: forgotPasswordReducer,
   cart: cartReducer,
+  list: listReducer,
   newBooking: newBookingReducer,
   myBookings: myBookingsReducer,
   bookingDetails: bookingDetailsReducer,
@@ -39,6 +41,11 @@ let initialState = {
     shippingInfo: localStorage.getItem("shippingInfo")
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
+  },
+  list: {
+    listItems: localStorage.getItem("listItems")
+      ? JSON.parse(localStorage.getItem("listItems"))
+      : [],
   },
 };
 
